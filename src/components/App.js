@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import './../styles/App.css';
 
 const App = () => {
@@ -9,10 +8,11 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       try{
-        const response = axios.get('https://dummyjson.com/products');
-        setProducts(response.data);
+        const response = await fetch('https://dummyjson.com/products');
+        const data = await response.json();
+        setProducts(data);
         setIsLoading(false);
-      } catch {
+      } catch (error) {
         console.error(error);
         setIsLoading(false);
       }
