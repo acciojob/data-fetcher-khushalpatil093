@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './../styles/App.css';
@@ -10,7 +9,7 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       try{
-        const response = axios.get('https://dummyjson.com/products')
+        const response = axios.get('https://dummyjson.com/products');
         setProducts(response.data);
         setIsLoading(false);
       } catch {
@@ -30,7 +29,7 @@ const App = () => {
         {/* Do not remove the main div */}
           {
             products.map((product) => (
-              <pre key={product.id}>{product.name}</pre>
+              <pre>{product}</pre>
             ))
           }
     </div>
