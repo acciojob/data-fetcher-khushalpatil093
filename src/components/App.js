@@ -28,13 +28,11 @@ const App = () => {
   return (
     <div>
         {/* Do not remove the main div */}
-        <ul>
           {
             products.map((product) => (
-              <li key={product.id}>{product.name}</li>
+              <pre key={product.id}>{product.name}</pre>
             ))
           }
-        </ul>
     </div>
   )
 }
