@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       try{
-        const response = axios.get(`https://dummyjson.com/products`)
+        const response = axios.get('https://dummyjson.com/products')
         setProducts(response.data);
         setIsLoading(false);
       } catch {
