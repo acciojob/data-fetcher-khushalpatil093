@@ -10,7 +10,7 @@ const App = () => {
         const fetchData = async () => {
           try {
             const response = await axios.get('https://dummyjson.com/products');
-            const result = await response.json();
+            const result = await response.data;
             setData(result);
           } catch (error) {
             console.error('Error fetching data:', error);
