@@ -1,39 +1,35 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
-import './../styles/App.css';
+
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchData() {
-      try{
-        const response = await fetch('https://dummyjson.com/products');
-        const data = await response.json();
-        setProducts(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch('https://dummyjson.com/products');
+            const result = await response.json();
+            setData(result);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchData();
+      }, []);
 
-  if(isLoading) {
-    return <p>Loading...</p>
-  }
 
   return (
     <div>
-        {/* Do not remove the main div */}
-          {
-            products.map((product) => (
-              <pre>{product}</pre>
-            ))
-          }
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      )}
     </div>
   )
 }
-
-export default App
