@@ -9,7 +9,7 @@ const App = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://dummyjson.com/products');
+            const response = await axios.get('https://dummyjson.com/products');
             const result = await response.json();
             setData(result);
           } catch (error) {
